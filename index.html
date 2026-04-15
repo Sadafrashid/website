@@ -137,25 +137,37 @@ body::before {
 
 
 /* Floating Leaf for Vision Section */
+/* --- FIXED FLOATING VISION LEAF --- */
 .vision-leaf {
     position: absolute;
     width: 120px;
     bottom: 15%;
-    left: 80%;
+    /* Use right instead of left to prevent overflow */
+    right: 10%; 
     opacity: 0.5;
     z-index: 1;
+    /* Ensure the animation is assigned correctly */
     animation: leafFloat 4s ease-in-out infinite;
     pointer-events: none;
-    /* ADD THIS: ensures it doesn't cause a scrollbar */
-    max-width: 100%; 
+    transform-origin: center;
 }
 
-/* Add a Media Query to fix mobile specifically */
+@keyframes leafFloat {
+    0%, 100% {
+        /* Use translate3d for better hardware acceleration on mobile */
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate3d(0, -20px, 0) rotate(15deg);
+    }
+}
+
+/* --- MOBILE ADJUSTMENTS --- */
 @media (max-width: 768px) {
     .vision-leaf {
-        left: auto;
-        right: 5%; /* Switch to right-based positioning for better control */
-        width: 80px; /* Scale it down for smaller screens */
+        width: 80px; /* Smaller leaf for mobile */
+        right: 5%;   /* Tucked safely away from the edge */
+        bottom: 10%;
     }
 }
 
