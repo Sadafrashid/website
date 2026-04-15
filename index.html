@@ -1090,7 +1090,7 @@ function swapCards(clickedCard) {
 
         // Randomized properties
         const size = isSplit ? Math.random() * 10 + 10 : Math.random() * 20 + 20;
-        const duration = (Math.random() * 5 + 5) * 1000;
+        const duration = (Math.random() * 5 + 10) * 1000;
         
         leaf.style.width = `${size}px`;
         leaf.style.left = isSplit ? `${parentX}px` : `${Math.random() * window.innerWidth}px`;
